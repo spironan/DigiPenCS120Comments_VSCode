@@ -20,7 +20,7 @@ function activate(context) {
             fileCommentCompletion.documentation = new vscode.MarkdownString("Inserts the file level documentation header.");
             // Function Comment Header Auto Completion
             const functionCommentCompletion = new vscode.CompletionItem('Documentation: Function Level');
-            functionCommentCompletion.insertText = new vscode.SnippetString('*!\n@brief  @todo\n\n@param  @todo\n@return none\n*//*__________________________________________________________________________*/');
+            functionCommentCompletion.insertText = new vscode.SnippetString('*!\n@brief  @todo\n\n@param  @todo\n@return @todo\n*//*__________________________________________________________________________*/');
             functionCommentCompletion.documentation = new vscode.MarkdownString("Inserts the function level documentation header.");
             // return all completion items as array
             return [
