@@ -4,8 +4,8 @@
 
 import * as vscode from 'vscode';
 
-export function activate(context: vscode.ExtensionContext) {
-
+export function activate(context: vscode.ExtensionContext) 
+{
 	// Get Current Date
 	const currentDate = new Date().toLocaleDateString('en-SG', 
 	{ 
@@ -14,13 +14,24 @@ export function activate(context: vscode.ExtensionContext) {
 		year: 'numeric',
 	});
 
+	// Get configured name and id
+	const config = vscode.workspace.getConfiguration('digipenComments');
+	const name = config.get('name');
+	const id = config.get('id');
+	const course = config.get('course');
+	const section = config.get('section');
+	
+	// Create author string
+	const authorStr = name + ' (' + id + ')';
+
+	// Register Completion Providers
 	const provider1 = vscode.languages.registerCompletionItemProvider(
 		['c', 'cpp', 'cs'], 
 		{
 			provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext) {
 				// File Comment Header Auto Completion
 				const fileCommentCompletion = new vscode.CompletionItem('Documentation: File Level');
-				fileCommentCompletion.insertText = new vscode.SnippetString('*!\n@file       @todo\n@author     @todo\n@course     @todo\n@section    @todo\n@assignment @todo\n@date       ' + currentDate + '\n@brief      @todo\n\n*//*__________________________________________________________________________*/\n\n');
+				fileCommentCompletion.insertText = new vscode.SnippetString('*!\n@file       @todo\n@author     ' + authorStr + '\n@course     ' + course + '\n@section    ' + section + '\n@assignment @todo\n@date       ' + currentDate + '\n@brief      @todo\n\n*//*__________________________________________________________________________*/\n\n');
 				fileCommentCompletion.documentation = new vscode.MarkdownString("Inserts the file level documentation header.");
 
 				// Function Comment Header Auto Completion

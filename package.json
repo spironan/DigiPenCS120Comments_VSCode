@@ -40,5 +40,42 @@
 		"eslint": "^7.1.0",
 		"typescript": "^4.0.2",
 		"@types/vscode": "^1.32.0"
-	}
+	},
+	"contributes": {
+		"configuration": {
+		  "title": "DigiPen Comments",
+		  "properties": {
+			"digipenComments.name": {
+			  "type": "string",
+			  "scope": "application",
+			  "default": "@todo",
+			  "description": "Your full name as per name lists."
+			},
+			"digipenComments.id": {
+			  "type": "string",
+			  "scope": "application",
+			  "default": "@todo",
+			  "description": "Your DigiPen ID as per your DigiPen Webmail address."
+			},
+			"digipenComments.section": {
+			  "type": "string",
+			  "scope": "application",
+			  "default": "@todo",
+			  "description": "Your DigiPen course section. Usually represented as a letter."
+			},
+			"digipenComments.course": {
+			  "type": "string",
+			  "scope": "application",
+			  "default": "@todo",
+			  "enum" : ["RTIS", "IMGD", "SEEMS"],
+			  "enumDescriptions": [
+				  "Real Time Interactive Simulations",
+				  "Interactive Media and Game Design",
+				  "Systems Engineering (ElectroMechanical Systems)"
+			  ],
+			  "description": "Your DigiPen course."
+			}
+		  }
+		}
+	  }
 }
