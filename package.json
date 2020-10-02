@@ -62,18 +62,6 @@
 			  "scope": "application",
 			  "default": "@todo",
 			  "description": "Your DigiPen course section. Usually represented as a letter."
-			},
-			"digipenComments.course": {
-			  "type": "string",
-			  "scope": "application",
-			  "default": "@todo",
-			  "enum" : ["RTIS", "IMGD", "SEEMS"],
-			  "enumDescriptions": [
-				  "Real Time Interactive Simulations",
-				  "Interactive Media and Game Design",
-				  "Systems Engineering (ElectroMechanical Systems)"
-			  ],
-			  "description": "Your DigiPen course."
 			}
 		  }
 		}

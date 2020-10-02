@@ -16,7 +16,6 @@ function activate(context) {
     const config = vscode.workspace.getConfiguration('digipenComments');
     const name = config.get('name');
     const id = config.get('id');
-    const course = config.get('course');
     const section = config.get('section');
     // Create author string
     const authorStr = name + ' (' + id + ')';
@@ -25,7 +24,7 @@ function activate(context) {
         provideCompletionItems(document, position, token, context) {
             // File Comment Header Auto Completion
             const fileCommentCompletion = new vscode.CompletionItem('Documentation: File Level');
-            fileCommentCompletion.insertText = new vscode.SnippetString('*!\n@file       @todo\n@author     ' + authorStr + '\n@course     ' + course + '\n@section    ' + section + '\n@assignment @todo\n@date       ' + currentDate + '\n@brief      @todo\n\n*//*__________________________________________________________________________*/\n\n');
+            fileCommentCompletion.insertText = new vscode.SnippetString('*!\n@file       @todo\n@author     ' + authorStr + '\n@course     @todo\n@section    ' + section + '\n@assignment @todo\n@date       ' + currentDate + '\n@brief      @todo\n\n*//*__________________________________________________________________________*/\n\n');
             fileCommentCompletion.documentation = new vscode.MarkdownString("Inserts the file level documentation header.");
             // Function Comment Header Auto Completion
             const functionCommentCompletion = new vscode.CompletionItem('Documentation: Function Level');
